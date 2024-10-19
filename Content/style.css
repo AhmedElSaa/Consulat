@@ -1,0 +1,441 @@
+* {
+    font-family: 'Montserrat', sans-serif; /* Police utisé pour tout le site */
+}
+
+body {
+    margin: auto; /*Enlever les barres défini par le navigateur */
+    box-sizing: border-box;
+
+}
+
+/*--------------------LOADER--------------------*/
+
+/* Fond blanc et positionnement du loader */
+.loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white; /* Fond blanc */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Pour rester au-dessus de tout */
+}
+
+/* Drapeau avec animation */
+.loader-flag img {
+    width: 150px; /* Taille du drapeau */
+    height: auto;
+    animation: flag-move 2s infinite ease-in-out; /* Animation du mouvement du drapeau */
+}
+
+/* Animation du mouvement */
+@keyframes flag-move {
+    0% {
+        transform: translateY(0); /* Position initiale */
+    }
+    50% {
+        transform: translateY(-20px); /* Légère montée */
+    }
+    100% {
+        transform: translateY(0); /* Retour à la position initiale */
+    }
+}
+
+/*--------------------HEADER--------------------*/
+
+header { /* Arrière-plan header */ 
+    background-color: #ce1828; 
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header img { /* Logo header */
+    height: 65px;
+}
+
+.head1 { /* Bloc de gauche du header */
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+    color: #ffffff;
+}
+
+.head1 img {
+    padding-right: 5px;
+}
+
+.head1 p {
+    margin: 0;
+}
+
+.head2 { /* Bloc de droite du header */
+    margin-right: 50px;
+    display: flex;
+}
+
+.nb_a{ /* Effet de coulissement en dessous de la navbar*/
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 0 5px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.nb_a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #c1950a;
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+
+.nb_a:hover::after{
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.tricolor-bar {    /* Barre de décoration avec les couleurs égyptienne */ 
+    display: flex; /* Utilise Flexbox pour aligner les sections horizontalement */
+    height: 10px;  /* Ajuste la hauteur selon tes besoins */
+}
+
+.tricolor-bar .red {
+    background-color: #ce1828; /* Rouge */
+    flex: 1;
+}
+
+.tricolor-bar .white {
+    background-color: #ffffff; /* Blanc */
+    flex: 1;
+}
+
+.tricolor-bar .black {
+    background-color: #000000; /* Noir */
+    flex: 1;
+}
+
+/*--------------------FOOTER--------------------*/
+
+footer {
+    background-color: #000000;
+    width: 100%;
+    height: 90px;
+    color: #ffffff;
+}
+
+footer a {
+    text-decoration: none;
+    color: #ffffff;
+    margin: 10px 60px;
+    cursor: pointer;
+}
+
+.footer-copy {
+    text-align: center;
+    margin: 10px;
+}
+
+/*--------------------ACCUEIL--------------------*/
+
+/*--------------------ACCUEIL-present--------------------*/
+
+.home-present {
+    position: relative;
+    background-color: rgb(30, 30, 30); /* Fond noir sur image */
+    height: 600px; 
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    overflow: hidden; /* S'assure que tout reste à l'intérieur de la section */
+}
+
+.home-present img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Améliore la qualité de l'image */
+    position: absolute; /* Position absolue pour l'image */
+    top: 0;
+    left: 0;
+    z-index: 1;
+    opacity: 0.6; /* Réduit l'opacité pour que le texte soit plus lisible */
+}
+
+.home-present-text {
+    position: relative;
+    z-index: 2; /* Assure que le texte passe par-dessus l'image */
+    color: white;
+    text-align: center;
+}
+
+.home-present-text p {
+    font-size: 20px;
+}
+
+/*--------------------ACCUEIL-contact--------------------*/
+
+.home-contact {
+    border: 1px solid #a6a6a6;
+    background-color: #fafafa;
+    width: 70%;
+    height: 150px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1000;
+    position: absolute;
+    left: 50%; /* Centre horizontalement */
+    transform: translateX(-50%); /* Assure le centrage complet */
+    top: 622px; /* Ajuste cette valeur pour la position verticale (chevauchement sur l'image) */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Ajout d'une ombre pour un effet visuel */
+}
+
+.home-contact div {
+    font-size: 20px;
+}
+
+.home-contact i {
+    font-size: 28px;
+}
+
+.home-contact-info {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.home-contact-info div {
+    padding-left: 15px;
+}
+
+.home-info h1,
+.home-culture h1 {
+    margin: 100px 0 50px 0;
+    text-align: center;
+}
+
+.home-culture {
+    margin-bottom: 120px;
+}
+
+/*--------------------ACCUEIL-actu(bootstrap)--------------------*/
+
+.custom-card {
+    width: 28%; /* Chaque card prendra 28% de la largeur de l'écran */
+}
+
+.custom-card .card {
+    height: 450px; /* Hauteur fixe des cards */
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between; 
+    flex-wrap: wrap;
+}
+
+.custom-card .card-img-top {
+    height: 50%; /* Image occupe 60% de la hauteur de la card */
+    object-fit: cover; /* Ajuste l'image sans la déformer */
+}
+
+.custom-card .card-body {
+    height: 50%; /* Texte occupe 40% de la card */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* Centre le texte */
+    flex-direction: column;
+}
+
+.card-body h2{
+    font-size: 22px;
+}
+
+/*--------------------ACCUEIL-culture--------------------*/
+
+.carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%; /* Largeur totale du carousel */
+}
+
+.carousel-track-container {
+    width: 84%; /* Montre seulement 3 cards (3 * 28%) à la fois */
+    overflow: hidden; /* Cache les cards qui sortent du cadre visible */
+    position: relative;
+    padding: 0; /* Assure-toi qu'il n'y a pas de padding ajouté */
+    margin: 0;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: calc(33% * 7); /* Largeur totale pour 7 cards */
+}
+
+.custom-card2 {
+    width: 28%; /* Chaque card occupe 28% de la largeur */
+    margin-right: 10px; /* Espacement entre les cards */
+    margin-bottom: 20px; /* Espace en bas des cards */
+}
+
+.custom-card2 .card {
+    height: 300px; /* Hauteur fixe pour chaque card */
+    display: flex;
+    flex-direction: column; /* Aligne l'image et le texte verticalement */
+    justify-content: space-between; /* Espace entre l'image et le texte */
+}
+
+.custom-card2 .card-img-top {
+    height: 60%; /* L'image occupe 60% de la hauteur */
+    object-fit: cover; /* Assure que l'image garde ses proportions */
+}
+
+.custom-card2 .card-body {
+    height: 40%; /* Le texte occupe 40% de la card */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* Centre le texte */
+}
+
+button.prev,
+button.next {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+button.prev {
+    left: 7%; /* Positionné juste à gauche du premier card */
+}
+
+button.next {
+    right: 7%; /* Positionné juste à droite du dernier card */
+}
+
+/*--------------------ACCUEIL-fiche--------------------*/
+
+.home-fiche {
+    border: 1px solid #a6a6a6;
+    background-color: #fafafa;
+    width: 70%;
+    height: 220px;
+    z-index: 1000;
+    position: absolute;
+    left: 50%; /* Centre horizontalement */
+    transform: translateX(-50%); /* Assure le centrage complet */
+    top: 1880px; /* Ajuste cette valeur pour la position verticale (chevauchement sur l'image) */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Ajout d'une ombre pour un effet visuel */
+    text-align: center;
+}
+
+.home-fiche-titles {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.home-fiche-gauche {
+    flex: 1;
+}
+
+.home-fiche-droite {
+    flex: 1;
+}
+
+.home-fiche-info {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-size: 20px;
+    margin-left: 20px;
+    padding: 5px 5px 0 0;
+}
+
+.home-fiche-info i {
+    margin-right: 5px;
+}
+
+/*--------------------ACCUEIL-end--------------------*/
+
+.home-end {
+    display: flex;
+    background-color: #000000;
+    justify-content: space-around;
+}
+
+.home-end-maps {
+    flex: 1;
+    margin: 140px 20px 40px 60px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.home-end-container {
+    margin: 140px 60px 40px 10px;
+    padding: 10px;
+    background-color: #fafafa;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    flex: 1;
+}
+
+.home-end-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #a6a6a6;
+    border-radius: 4px;
+}
+
+.home-end-bt {
+    padding: 10px 20px;
+    background-color: #ce1126;
+    color: white;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.home-end-bt:hover {
+    background-color: #a50d1b;
+}
+

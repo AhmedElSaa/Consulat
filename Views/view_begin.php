@@ -13,11 +13,6 @@
 </head>
 <body>
 
-    <div class="loader-container">
-        <div class="loader-flag">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Flag_of_Egypt.svg" alt="Drapeau de l'Égypte">
-        </div>
-    </div>
 
     <header>
         <div class="head1">

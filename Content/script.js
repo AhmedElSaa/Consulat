@@ -31,5 +31,6 @@ function prevSlide() {
 window.addEventListener('load', function () {
     setTimeout(function() {
         document.querySelector('.loader-container').style.display = 'none';
-    }, 2000); // Le loader sera caché après 2s
+        alert('Ceci est un site fictif, il ne s\'agit en aucun cas du site officiel.');
+    }, 100); // Le loader sera caché après 2s
 });

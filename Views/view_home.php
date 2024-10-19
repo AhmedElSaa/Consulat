@@ -1,5 +1,11 @@
 <?php require 'view_begin.php'; ?>
 
+<div class="loader-container">
+        <div class="loader-flag">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Flag_of_Egypt.svg" alt="Drapeau de l'Égypte">
+        </div>
+    </div>
+
 <main>
 
     <div class="home-present">

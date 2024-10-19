@@ -55,8 +55,8 @@
                     <div class="card">
                         <img src="img/case3.jpg" class="card-img-top" alt="Image 3">
                         <div class="card-body">
-                            <h2>Le Nil déborde, des villages inondés en Égypte</h2>
-                            <p class="card-text">Les fortes pluies provoquent des crues, affectant des milliers de familles.</p>
+                            <h2>Le 129 débarque au Caire</h2>
+                            <p class="card-text">Le 129 s'installe au Caire avec des recettes exclusives.</p>
                         </div>
                     </div>
                 </div>

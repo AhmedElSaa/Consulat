@@ -30,7 +30,42 @@ function prevSlide() {
 
 window.addEventListener('load', function () {
     setTimeout(function() {
+        // Hide the loader after a small delay
         document.querySelector('.loader-container').style.display = 'none';
-        alert('Ceci est un site fictif, il ne s\'agit en aucun cas du site officiel.');
-    }, 100); // Le loader sera caché après 2s
+
+        // Show alert and wait for user confirmation
+        alert('Ceci est un site fictif, il ne s\'agit en aucun cas du site officiel et tous documents géneres sont faux.');
+
+        // After alert confirmation, trigger the text animation
+        document.querySelector('.home-present-text').classList.add('animate-slideUp');
+    }, 100); // Loader hides after 100ms
 });
+
+const togglePassword = document.querySelector('#togglePassword');
+const password = document.querySelector('#password');
+
+togglePassword.addEventListener('click', function (e) {
+    // Toggle the type attribute
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+
+    // Toggle the eye slash icon
+    this.classList.toggle('fa-eye-slash');
+});
+
+const toggleConfirmPassword = document.querySelector('#toggleConfirmPassword');
+const confirmPassword = document.querySelector('#password_c');
+
+toggleConfirmPassword.addEventListener('click', function (e) {
+    // Toggle the type attribute
+    const type = confirmPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+    confirmPassword.setAttribute('type', type);
+
+    // Toggle the eye slash icon
+    this.classList.toggle('fa-eye-slash');
+});
+
+function toggleMenu() {
+    var navbarNav = document.getElementById("navbarNav");
+    navbarNav.classList.toggle("show");
+}

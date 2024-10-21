@@ -8,39 +8,43 @@ body {
 
 }
 
+::placeholder {
+    color: #2e2e2e; /* Noir */
+    opacity: 1;  /* Opacité à 100% (pour éviter la transparence) */
+}
+
 /*--------------------LOADER--------------------*/
 
-/* Fond blanc et positionnement du loader */
+/* Fond blanc et taile/position du drapea */
 .loader-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: white; /* Fond blanc */
+    background-color: white; 
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999; /* Pour rester au-dessus de tout */
+    z-index: 9999; 
 }
 
-/* Drapeau avec animation */
 .loader-flag img {
-    width: 150px; /* Taille du drapeau */
+    width: 150px; 
     height: auto;
-    animation: flag-move 2s infinite ease-in-out; /* Animation du mouvement du drapeau */
+    animation: flag-move 2s infinite ease-in-out; 
 }
 
-/* Animation du mouvement */
+/* Mouvement du drapeau */
 @keyframes flag-move {
     0% {
-        transform: translateY(0); /* Position initiale */
+        transform: translateY(0); 
     }
     50% {
-        transform: translateY(-20px); /* Légère montée */
+        transform: translateY(-20px); 
     }
     100% {
-        transform: translateY(0); /* Retour à la position initiale */
+        transform: translateY(0); 
     }
 }
 
@@ -127,13 +131,68 @@ header img { /* Logo header */
     flex: 1;
 }
 
+.navbar-toggler {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    display: none; /* Cacher par défaut */
+}
+
+.navbar-toggler-icon {
+    font-size: 1.5rem;
+    color: white;
+}
+
+/* Cacher le menu mobile par défaut */
+.navbar-collapse {
+    display: none;
+    position: absolute;
+    top: 90px;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* Fond noir avec un peu de transparence */
+    padding: 10px 0;
+    z-index: 10000;
+}
+
+/* Montrer le menu quand il est actif */
+.navbar-collapse.show {
+    display: block;
+}
+
+/* Menu hamburger uniquement en dessous de 800px */
+@media (max-width: 800px) {
+    .head2 {
+        display: none;
+    }
+
+    .navbar-toggler {
+        display: block; /* Afficher le bouton hamburger */
+        z-index: 10000;
+    }
+}
+
+/* Styles supplémentaires pour le menu mobile */
+.navbar-collapse a {
+    color: white;
+    text-decoration: none;
+    margin: 5px 0;
+    padding: 10px;
+    text-align: center;
+    display: block;
+}
+
+.navbar-collapse a:hover {
+    background-color: #c1950a;
+}
 /*--------------------FOOTER--------------------*/
 
 footer {
     background-color: #000000;
     width: 100%;
-    height: 90px;
     color: #ffffff;
+    height: 90px;
+    margin: auto;
 }
 
 footer a {
@@ -146,6 +205,22 @@ footer a {
 .footer-copy {
     text-align: center;
     margin: 10px;
+}
+
+@media screen and (max-width: 800px) {
+
+    .head1 p {
+        display: none;
+    }
+
+    footer {
+        height: 200px; 
+    }
+
+    .footer-list {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 /*--------------------ACCUEIL--------------------*/
@@ -163,25 +238,45 @@ footer a {
 }
 
 .home-present img {
+    position: fixed;
     width: 100%;
     height: 100%;
     object-fit: cover; /* Améliore la qualité de l'image */
     position: absolute; /* Position absolue pour l'image */
     top: 0;
     left: 0;
-    z-index: 1;
+    z-index: 1000;
     opacity: 0.6; /* Réduit l'opacité pour que le texte soit plus lisible */
 }
 
 .home-present-text {
     position: relative;
-    z-index: 2; /* Assure que le texte passe par-dessus l'image */
+    z-index: 2;
     color: white;
     text-align: center;
+    opacity: 0; /* cacher le texte */
+    transform: translateY(100%); /* le placé en dessous*/
+    z-index: 1000;
 }
 
 .home-present-text p {
     font-size: 20px;
+}
+
+.animate-slideUp {
+    animation: slideUp 0.7s ease-out forwards; /* temps d'animation et direction */
+}
+
+/* Animation pour l'apparition du texte*/
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /*--------------------ACCUEIL-contact--------------------*/
@@ -200,11 +295,15 @@ footer a {
     transform: translateX(-50%); /* Assure le centrage complet */
     top: 622px; /* Ajuste cette valeur pour la position verticale (chevauchement sur l'image) */
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Ajout d'une ombre pour un effet visuel */
+    flex-wrap: wrap;
 }
 
-.home-contact div {
-    font-size: 20px;
-}
+@media screen and (max-width: 656px) {
+
+    .home-contact{
+        justify-content: flex-start;
+    }
+} 
 
 .home-contact i {
     font-size: 28px;
@@ -315,7 +414,7 @@ footer a {
 
 button.prev,
 button.next {
-    background-color: #333;
+    background-color: #2e2e2e;
     color: white;
     border: none;
     padding: 10px;
@@ -384,6 +483,7 @@ button.next {
     display: flex;
     background-color: #000000;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .home-end-maps {
@@ -439,3 +539,180 @@ button.next {
     background-color: #a50d1b;
 }
 
+/*--------------------SIGN-INSCRIPTION--------------------*/
+
+.sign-back {
+    margin: 10px 20px;
+    background-color: transparent;
+    font-size: 20px;
+    border: 1px solid #cecece;
+    border-radius: 10px;
+    width: 10%;
+    padding: 3px;
+}
+
+.sign-back a {
+    text-decoration: none;
+    color: #cecece;
+}
+
+
+.sign {
+    background-image: url('../img/back2.png'); /* Remplacez par le chemin de votre image */
+    background-size: cover;
+    background-position: center;
+    height: 95vh;
+    width: 100%;
+    object-fit: cover;
+}
+
+.sign-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: -15px auto auto auto;
+}
+
+.sign-form {
+    background-color: #ebebeb;
+    border-radius: 30px;
+    margin: 20px;
+    width: 65vh;
+    font-size: 20px;
+}
+
+.sign-loterie {
+    background-color: #ebebeb;
+    border-radius: 30px;
+    width: 65vh;
+    margin: 20px;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sign-loterie p {
+    text-align: center;
+    margin: 10px;
+}
+
+.sign-form-info {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    font-size: 22px;
+}
+
+.sign-form-info input,
+.sign-form-info select {
+    margin: 7px;
+    border-radius: 5px;
+    border: 0;
+    padding-left: 5px;
+}
+
+.sign-form-info label {
+    margin-left: 10px;
+}
+
+.sign-form-info button {
+    border-radius: 20px;
+    background-color: #ffffff;
+    transition: transform 0.3s ease;
+    height: 50px;
+    width: 50%;
+    align-items: center;
+    margin: 20px auto;
+}
+
+.sign-form-info button:hover {
+    transform: scale(1.1);
+}
+
+.sign-form-info p {
+    text-align: center;
+}
+
+/*--------------------SIGN-CONNEXION--------------------*/
+
+.sign-form-in {
+    background-color: #ebebeb;
+    border-radius: 30px;
+    margin: 250px auto auto auto;
+    width: 40%;
+    font-size: 20px;
+}
+
+/*--------------------SIGN-PASSWORD--------------------*/
+
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-container input {
+    width: 100%;
+    padding-right: 40px;
+    border-radius: 5px;
+    padding-left: 5px;
+    height: 40px;
+}
+
+.password-container i {
+    position: absolute;
+    right: 15px;
+    margin-top: 5px;
+    cursor: pointer;
+    color: #a6a6a6; 
+}
+
+/*--------------------VISA--------------------*/
+
+.visa-present {
+    position: relative;
+    background-color: rgb(255, 255, 255); /* Fond noir sur image */
+    height: 600px; 
+    display: flex;
+    align-items: center; 
+    justify-content: space-around; 
+    flex-wrap: wrap;
+    overflow: hidden; /* S'assure que tout reste à l'intérieur de la section */
+}
+
+.visa-present img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Améliore la qualité de l'image */
+    position: absolute; /* Position absolue pour l'image */
+    top: 0;
+    left: 0;
+    z-index: 10;
+    opacity: 0.6; /* Réduit l'opacité pour que le texte soit plus lisible */
+}
+
+.visa-present h1 {
+    font-weight: 700;
+    text-align: center;
+    z-index: 100;
+}
+
+.visa-present a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 30px;
+    z-index: 100;
+    border: 1px solid #000000;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    transition: 0.5s ease;
+}
+
+.visa-present a:hover {
+    transform: scale(1.1);
+    border: 1px solid #cecece;
+}

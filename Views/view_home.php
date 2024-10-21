@@ -1,15 +1,15 @@
 <?php require 'view_begin.php'; ?>
 
 <div class="loader-container">
-        <div class="loader-flag">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Flag_of_Egypt.svg" alt="Drapeau de l'Égypte">
-        </div>
+    <div class="loader-flag">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Flag_of_Egypt.svg" alt="Drapeau de l'Égypte">
     </div>
+</div>
 
 <main>
 
     <div class="home-present">
-        <img src="img/luxor.jpg" alt="img-accueil">
+        <img src="img/back1.jpg" alt="img-accueil">
         <div class="home-present-text">
             <h1>Consulat d'Égypte</h1>
             <p>
@@ -23,7 +23,7 @@
     <div class="home-contact">
         <div class="home-contact-info"><i class="fa-solid fa-phone"></i><div>Téléphone<br>+33 1 55 21 43 70</div></div>
         <div class="home-contact-info"><i class="fa-solid fa-envelope"></i><div>E-mail<br>consulate.paris@gmail.com</div></div>
-        <div class="home-contact-info"><i class="fa-solid fa-map-pin"></i><div>Adresse<br>53 Bd Bineau, 92200</div></div>
+        <div class="home-contact-info"><i class="fa-solid fa-map-pin" style="font-size: 44px;"></i><div>Adresse<br>53 Bd Bineau, 92200</div></div>
     </div>
 
     <div class="home-info">

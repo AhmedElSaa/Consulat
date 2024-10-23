@@ -16,7 +16,7 @@ require_once 'Controllers/Controller.php';
 include_once 'Models/credentials.php';
 
 // Liste des contrôleurs
-$controllers = ["home", "signup", "signin", "visa", "user"];
+$controllers = ["home", "signup", "signin", "visa", "user", "admin"];
 // Nom du contrôleur par défaut
 $controller_default = "home";
 

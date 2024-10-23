@@ -4,6 +4,10 @@
 <head>
     <meta charset="utf-8">
     <title>Inscription</title>
+    <?php if (!empty($redirectUrl)): ?>
+        <!-- Redirection après 2 secondes -->
+        <meta http-equiv="refresh" content="2;URL=<?php echo htmlspecialchars($redirectUrl); ?>">
+    <?php endif; ?>
     <link rel="stylesheet" href="Content/style.css"/>
     <link rel="icon" href="img/logo.png" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -20,7 +24,11 @@
     
     <div class="sign-container">
         <div class="sign-form"> 
-            <?php echo $successMsg; ?>
+            <?php 
+            if (!empty($successMsg)) {
+                echo '<p style="color:green; text-align:center;">' . htmlspecialchars($successMsg) . '</p>';
+            }
+            ?>
 
             <form action="?controller=signup&action=signup" class="sign-form-info" method="post">
                 <input type="text" placeholder="Nom" name="nom" required>
@@ -28,14 +36,14 @@
                 <input type="email" placeholder="Adresse e-mail" name="email" required>
 
                 <select id="nationSelect" name="nations" required>
-                    <option value="" disabled selected hidden>Nationnalité</option>
+                    <option value="" disabled selected hidden>Nationalité</option>
                     <?php foreach ($nations as $nation): ?>
                         <option value="<?php echo $nation['id_nat']; ?>"><?php echo $nation['nation']; ?></option>
                     <?php endforeach; ?>
                 </select> 
 
                 <input type="text" placeholder="N° Passeport" name="numPass">
-                <label for="dateExpPass">Date de d'expiration du passeport</label>
+                <label for="dateExpPass">Date d'expiration du passeport</label>
                 <input id="dateExpPass" type="date" name="dateExpPass" required>
                 <label for="dateNaissance">Date de naissance</label>
                 <input id="dateNaissance" type="date" name="dateNaissance" required>
@@ -63,7 +71,6 @@
             </form>
         </div>
              
-        
         <div>
             <div class="sign-error">
                 <?php   

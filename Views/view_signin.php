@@ -23,15 +23,15 @@
         <div class="sign-form-in"> 
             <?php   
             echo $errorLogin;
-            echo $successLogin;?>
+            ?>
             <form action="?controller=signin&action=signin" method="post" class="sign-form-info">
-                <input type="email" placeholder="Adresse e-mail" name="email">
+                <input type="email" placeholder="Adresse e-mail" name="email" required>
 
                 <div class="password-container">
-                    <input id="password" type="password" placeholder="Mot de passe" name="password">
+                    <input id="password" type="password" placeholder="Mot de passe" name="password" required>
                     <i class="fas fa-eye" id="togglePassword" style="cursor: pointer; position: absolute; right: 15px; top: 15px;"></i>
                 </div>
-                <a href="#" style="text-align: center; color: #000000;">Mot de pass oublié ?</a>
+                <a href="#" style="text-align: center; color: #000000;">Mot de passe oublié ?</a>
 
                 <button type="submit">Se connecter</button>
                 <p>Pas encore inscrit ?<br><a href="?controller=signup" style="color: black;">Inscrivez-vous.</a></p>

@@ -20,11 +20,8 @@
     
     <div class="sign-container">
         <div class="sign-form"> 
-            <?php   
-            echo $errorMail;
-            echo $errorMdp; 
-            echo $errorCreation;
-            echo $successMsg; ?>
+            <?php echo $successMsg; ?>
+
             <form action="?controller=signup&action=signup" class="sign-form-info" method="post">
                 <input type="text" placeholder="Nom" name="nom" required>
                 <input type="text" placeholder="Prénom" name="prenom" required>
@@ -33,7 +30,7 @@
                 <select id="nationSelect" name="nations" required>
                     <option value="" disabled selected hidden>Nationnalité</option>
                     <?php foreach ($nations as $nation): ?>
-                    <option value="<?php echo $nation['id_nat']; ?>"><?php echo $nation['nation']; ?></option>
+                        <option value="<?php echo $nation['id_nat']; ?>"><?php echo $nation['nation']; ?></option>
                     <?php endforeach; ?>
                 </select> 
 
@@ -58,22 +55,31 @@
                 </div>
 
                 <div class="checkbox">
-                    <label><input type="checkbox" name="loterie" value="True"> Participer à la loterie</label>
+                    <label><input type="checkbox" id="loterie" name="loterie" value="1">Participer à la loterie</label>
                 </div>
 
                 <button type="submit">S'inscrire</button>
                 <p>Vous possédez déjà un compte ? <br><a href="?controller=signin" style="color: black;">Identifiez-vous.</a></p>
             </form>
         </div>
-
-        <div class="sign-loterie">
-            <h2>Règle de la loterie</h2>
-            <p>
-                La loterie pour la nationalité égyptienne est un concept auquel chaque utilisateur peut choisir de s'inscrire gratuitement. Les participants sont inscrits jusqu'à ce que le nombre nécessaire soit atteint, 
-                après quoi un tirage au sort est organisé pour désigner un gagnant. Ce gagnant reçoit la nationalité égyptienne, et toutes les informations des participants sont traitées de manière confidentielle.
-                Le tirage est effectué de manière transparente. Participer signifie accepter les règles du concept, avec la compréhension que seule la chance déterminera le gagnant.
-            </p>
-        </div>
+             
+        
+        <div>
+            <div class="sign-error">
+                <?php   
+                echo $errorMessages;
+                ?>
+            </div>
+                        
+            <div class="sign-loterie">
+                <h2>Règle de la loterie</h2>
+                <p>
+                    La loterie pour la nationalité égyptienne est un concept auquel chaque utilisateur peut choisir de s'inscrire gratuitement. Les participants sont inscrits jusqu'à ce que le nombre nécessaire soit atteint, 
+                    après quoi un tirage au sort est organisé pour désigner un gagnant. Ce gagnant reçoit la nationalité égyptienne, et toutes les informations des participants sont traitées de manière confidentielle.
+                    Le tirage est effectué de manière transparente. Participer signifie accepter les règles du concept, avec la compréhension que seule la chance déterminera le gagnant.
+                </p>
+            </div>
+        </div>               
 
     </div>    
 </body>

@@ -1,26 +1,27 @@
 <?php
 
-//Message d'erreur
+// Message d'erreur
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+
 // Démarrage de la session
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Inclusion des modèles et des contrôleurs
 require_once 'Models/Model.php';
 require_once 'Controllers/Controller.php';
 include_once 'Models/credentials.php';
 
-//Liste des contrôleurs
-$controllers = ["home", "signup", "signin", "visa"];
-//Nom du contrôleur par défaut
+// Liste des contrôleurs
+$controllers = ["home", "signup", "signin", "visa", "user"];
+// Nom du contrôleur par défaut
 $controller_default = "home";
 
-//On teste si le paramètre controller existe et correspond à un contrôleur de la liste $controllers
-
 // On teste si le paramètre controller existe et correspond à un contrôleur de la liste $controllers
-if (isset($_GET['controller']) and in_array($_GET['controller'], $controllers)) {
+if (isset($_GET['controller']) && in_array($_GET['controller'], $controllers)) {
     $nom_controller = $_GET['controller'];
 } else {
     $nom_controller = $controller_default;

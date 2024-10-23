@@ -5,7 +5,6 @@
 body {
     margin: auto; /*Enlever les barres défini par le navigateur */
     box-sizing: border-box;
-
 }
 
 ::placeholder {

@@ -27,9 +27,10 @@ class Model {
         return $req->fetchAll();
     }
 
-    public function createUser($nom, $prenom, $email, $nationalite, $numPass, $dateExpPass, $dateNaissance, $password, $loterie) {
-        $req = $this->db->prepare('INSERT INTO utilisateurs (nom, prenom, email, nationalite, numPass, dateExpPass, dateNaissance, password, loterie) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)');
-        $req->execute([$nom, $prenom, $email, $nationalite, $numPass, $dateExpPass, $dateNaissance, $password, $loterie]);
+    public function createUser($nom, $prenom, $email, $nationalite, $numPass, $dateExpPass, $dateNaissance, $password, $loterie, $role ) {
+        $password = 'aq1'.sha1($password.'1524').'25';
+        $req = $this->db->prepare('INSERT INTO utilisateurs (nom, prenom, email, nationalite, numPass, dateExpPass, dateNaissance, password, loterie, role) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+        $req->execute([$nom, $prenom, $email, $nationalite, $numPass, $dateExpPass, $dateNaissance, $password, $loterie, $role]);
         return $this->db->lastInsertId();
     }
 
@@ -47,5 +48,28 @@ class Model {
         return $count > 0;
     }
 
+    public function numPassExists($numPass) {
+        $requete = $this->db->prepare('SELECT COUNT(*) FROM utilisateurs WHERE numPass = ?');
+        $requete->bindValue(1, $numPass, PDO::PARAM_STR);
+        $requete->execute();
+        $count = $requete->fetchColumn();
+        return $count > 0;
+    }
+
+    public function getUserAndRole($email) {
+        $req = $this->db->prepare("
+            SELECT utilisateur.*, 
+                    CASE WHEN u.id_utilisateur IS NOT NULL THEN 'user'
+                         WHEN a.id_utilisateur IS NOT NULL THEN 'admin'
+                         ELSE 'inconnu' 
+                    END as role
+            FROM utilisateur
+            LEFT JOIN user u ON utilisateur.id_utilisateur = u.id_utilisateur
+            LEFT JOIN admin a ON utilisateur.id_utilisateur = a.id_utilisateur
+            WHERE utilisateur.mail = ?"
+        );
+        $req->execute([$email]);
+        return $req->fetch(PDO::FETCH_ASSOC);
+    }
 
 }

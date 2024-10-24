@@ -38,7 +38,7 @@
                 <select id="nationSelect" name="nations" required>
                     <option value="" disabled selected hidden>Nationalité</option>
                     <?php foreach ($nations as $nation): ?>
-                        <option value="<?php echo $nation['id_nat']; ?>"><?php echo $nation['nation']; ?></option>
+                        <option value="<?php echo $nation['id_nation']; ?>"><?php echo $nation['nation']; ?></option>
                     <?php endforeach; ?>
                 </select> 
 

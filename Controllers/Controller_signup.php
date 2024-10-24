@@ -16,7 +16,7 @@ class Controller_signup extends Controller{
             $nom           = htmlspecialchars($_POST['nom']);
             $prenom        = htmlspecialchars($_POST['prenom']);
             $email         = htmlspecialchars($_POST['email']);
-            $nationalite   = htmlspecialchars($_POST['nations']);
+            $id_nation     = htmlspecialchars($_POST['nations']);
             $numPass       = htmlspecialchars($_POST['numPass']);
             $dateExpPass   = htmlspecialchars($_POST['dateExpPass']);
             $dateNaissance = htmlspecialchars($_POST['dateNaissance']);
@@ -63,7 +63,7 @@ class Controller_signup extends Controller{
                 $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
 
                 // Création de l'utilisateur
-                $userId = $m->createUser($nom, $prenom, $email, $nationalite, $numPass, $dateExpPass, $dateNaissance, $passwordHashed, $loterie, $role);
+                $userId = $m->createUser($nom, $prenom, $email, $id_nation, $numPass, $dateExpPass, $dateNaissance, $passwordHashed, $loterie, $role);
                 if ($userId) {
                     $user = $m->findUserByEmail($email);
                 

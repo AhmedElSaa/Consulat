@@ -27,9 +27,9 @@ class Model {
         return $req->fetchAll();
     }
 
-    public function createUser($nom, $prenom, $email, $nationalite, $numPass, $dateExpPass, $dateNaissance, $password, $loterie, $role ) {
-        $req = $this->db->prepare('INSERT INTO utilisateurs (nom, prenom, email, nationalite, numPass, dateExpPass, dateNaissance, password, loterie, role) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
-        $req->execute([$nom, $prenom, $email, $nationalite, $numPass, $dateExpPass, $dateNaissance, $password, $loterie, $role]);
+    public function createUser($nom, $prenom, $email, $id_nation, $numPass, $dateExpPass, $dateNaissance, $password, $loterie, $role ) {
+        $req = $this->db->prepare('INSERT INTO utilisateurs (nom, prenom, email, id_nation, numPass, dateExpPass, dateNaissance, password, loterie, role) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+        $req->execute([$nom, $prenom, $email, $id_nation, $numPass, $dateExpPass, $dateNaissance, $password, $loterie, $role]);
         return $this->db->lastInsertId();
     }
 
@@ -55,5 +55,34 @@ class Model {
         $count = $requete->fetchColumn();
         return $count > 0;
     }
+
+    /**
+     * Méthode permettant de lister tous les inscrits avec une liaison des tables dans la bdd
+     */
+    public function listUsers() {
+        $req = $this->db->prepare('SELECT *
+        FROM utilisateurs
+        ORDER BY id_utilisateur');
+        $req->execute();
+        return $req->fetchAll();
+    }
+
+    /**
+     * Méthode permettant de supprimer quelqu'un de la liste
+     * @param int $id
+     */
+    public function removeUsers($id) {
+        $req = $this->db->prepare('DELETE FROM utilisateurs WHERE id_utilisateur = ?');
+        $req->execute([$id]);
+        return (bool) $req->rowCount();
+    }
+
+    public function findUserById($id) {
+        $req = $this->db->prepare('SELECT * FROM utilisateurs WHERE id_utilisateur = ?');
+        $req->execute([$id]);
+        return $req->fetch(PDO::FETCH_ASSOC);
+    }
+    
+    
 
 }

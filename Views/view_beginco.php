@@ -20,30 +20,12 @@
             <p>Consulat général<br>de la République<br>arabe d’Égypte</p>
         </div>
 
-        <!-- Menu principal pour les grands écrans -->
         <div class="head2"> 
-            <a href="?controller=home" class="nb_a">Accueil</a>
-            <a href="?controller=visa" class="nb_a">Demande d'e-Visa</a>
-            <a href="?controller=user" class="nb_a">Suivi</a>
             <a href="deco.php" class="b_deco" style="color: #ffffff">
                 <i class="fa-solid fa-power-off"></i>
             </a> 
         </div>
 
-        <!-- Bouton hamburger pour les petits écrans -->
-        <button class="navbar-toggler" type="button" onclick="toggleMenu()">
-            <i class="fas fa-bars navbar-toggler-icon"></i>
-        </button>
-
-        <!-- Menu mobile -->
-        <nav id="navbarNav" class="navbar-collapse">
-            <a href="?controller=home" class="nb_a">Accueil</a>
-            <a href="?controller=visa" class="nb_a">Demande d'e-Visa</a>
-            <a href="?controller=user" class="nb_a">Suivi</a>
-            <a href="deco.php" class="b_deco" style="color: #ffffff">
-                <i class="fa-solid fa-power-off"></i>
-            </a>        
-        </nav>
     </header>
 
     <div class="tricolor-bar">
@@ -51,11 +33,3 @@
         <div class="white"></div>
         <div class="black"></div>
     </div>
-
-    <!-- Script pour activer/désactiver le menu mobile -->
-    <script>
-        function toggleMenu() {
-            var navbarNav = document.getElementById("navbarNav");
-            navbarNav.classList.toggle("show");
-        }
-    </script>

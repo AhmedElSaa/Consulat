@@ -480,11 +480,18 @@ button.next {
 
 /*--------------------ACCUEIL-end--------------------*/
 
+.home-end-bg {
+    background-color: #000000;
+}
+
 .home-end {
     display: flex;
-    background-color: #000000;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
+    max-width: 1600px;
+    align-items: center;
+    margin: 0 auto;       
+
 }
 
 .home-end-maps {
@@ -718,9 +725,15 @@ button.next {
     border: 1px solid #cecece;
 }
 
-/*--------------------------------Liste-----------------------------*/
+/*--------------------------------ADMIN-----------------------------*/
 
-.list-info:hover {
+.list, 
+.suivi {
+    margin-bottom: 50px;
+}
+
+.list-info:hover,
+.suivi-info:hover {
     background-color: #cecece;
 }
 
@@ -728,4 +741,29 @@ button.next {
     border : 0px; 
     width : 30px; 
     padding-left : 0px;
+}
+
+.tirage-bt {
+    border-radius: 5px;
+    font-size: 20px;
+    background-color: #a50d1b;
+    color: #ffffff;
+    transition: 0.5s ease;
+}
+
+.tirage-bt:hover{
+    background-color: #d38080;
+    color: #ffffff;
+
+}
+
+.alert {
+    color: #ff0000;
+}
+
+.suivi-bt {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 10px;
 }

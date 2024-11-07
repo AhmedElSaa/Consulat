@@ -81,6 +81,11 @@ header img { /* Logo header */
     display: flex;
 }
 
+.head2co { /* Bloc de droite du header */
+    margin-right: 50px;
+    display: flex;
+}
+
 .nb_a{ /* Effet de coulissement en dessous de la navbar*/
     color: #ffffff;
     text-decoration: none;
@@ -411,6 +416,7 @@ footer a {
     align-items: center;
     justify-content: center;
     text-align: center; /* Centre le texte */
+    font-size: 15px;
 }
 
 button.prev,
@@ -440,7 +446,6 @@ button.next {
     border: 1px solid #a6a6a6;
     background-color: #fafafa;
     width: 70%;
-    height: 220px;
     z-index: 1000;
     position: absolute;
     left: 50%; /* Centre horizontalement */
@@ -467,15 +472,23 @@ button.next {
 .home-fiche-info {
     display: flex;
     align-items: center;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
-    font-size: 20px;
+    font-size: 15px;
     margin-left: 20px;
     padding: 5px 5px 0 0;
 }
 
 .home-fiche-info i {
     margin-right: 5px;
+}
+
+@media screen and (max-width: 767px) {
+
+    .home-fiche{
+        top: 2750px;
+        font-size: 10px;
+    }
 }
 
 /*--------------------ACCUEIL-end--------------------*/
@@ -496,13 +509,13 @@ button.next {
 
 .home-end-maps {
     flex: 1;
-    margin: 140px 20px 40px 60px;
+    margin: 160px 20px 40px 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .home-end-container {
-    margin: 140px 60px 40px 10px;
+    margin: 160px 20px 40px 20px;
     padding: 10px;
     background-color: #fafafa;
     border-radius: 10px;
@@ -595,7 +608,6 @@ button.next {
     border-radius: 30px;
     width: 65vh;
     margin: 20px;
-    height: 40vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -676,6 +688,23 @@ button.next {
     margin-top: 5px;
     cursor: pointer;
     color: #a6a6a6; 
+}
+
+@media screen and (max-width: 900px) {
+    .sign-back{
+        width: 20%;
+    }
+
+    .sign-form-in {
+        width: auto;
+        margin-top: 150px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .sign-back{
+        width: 30%;
+    }
 }
 
 /*--------------------VISA--------------------*/
@@ -766,4 +795,22 @@ button.next {
     justify-content: space-around;
     align-items: center;
     margin-bottom: 10px;
+}
+
+/*--------------------------------USER-----------------------------*/
+
+.form_user {
+    background-color: #f0f0f0;
+    padding: 20px;
+    max-width: 600px; 
+    margin: 20px auto;
+}
+
+.form_user form div {
+    padding: 5px;
+}
+
+.bt_user {
+    border-radius: 10px;
+    border: 1px solid;
 }

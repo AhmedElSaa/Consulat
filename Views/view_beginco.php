@@ -20,7 +20,7 @@
             <p>Consulat général<br>de la République<br>arabe d’Égypte</p>
         </div>
 
-        <div class="head2"> 
+        <div class="head2co"> 
             <a href="deco.php" class="b_deco" style="color: #ffffff">
                 <i class="fa-solid fa-power-off"></i>
             </a> 

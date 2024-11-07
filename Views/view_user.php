@@ -1,46 +1,53 @@
 <?php require 'view_beginco.php'; ?>
 
 <style>
-table { 
-    border-collapse : collapse;
-    margin : auto;
+table {
+    border-collapse: collapse;
+    margin: auto;
 }
 
-td,th {
-border : 1px solid black;
-width : 220px;
-height : 30px;
+td, th {
+    border: 1px solid black;
+    width: 220px;
+    height: 30px;
 }
-
 </style>
 
 <main>
-    <h1 style="color: #000000; text-align: center;">Bonjour<?php if (!empty($welcome)) : ?> <?php echo htmlspecialchars($welcome); ?><?php endif; ?></h1>
+    <h1 style="color: #000000; text-align: center;">Bonjour <?php echo htmlspecialchars($welcome); ?></h1>
 
     <section class="suivi" id="suivi">
         <div class="suivi-bt">
             <h3>Demandes</h3>
-            <button>Nouvelles demandes</button>
+            <a href="?controller=user&action=new_request"><button class="bt_user">Nouvelle demande</button></a>
         </div>
         <table>
 
             <tr class="suivi-title">
                 <th>Type</th>
                 <th>Date</th>
-                <th>Références</th>
+                <th>Référence</th>
                 <th>Statut</th>
             </tr>
 
-            <tr class="suivi-info">
-                <td>Visa</td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
+            <?php if (!empty($visaRequests)) : ?>
+                <?php foreach ($visaRequests as $request) : ?>
+                    <tr class="suivi-info">
+                        <td><?php echo htmlspecialchars($request['type']); ?></td>
+                        <td><?php echo htmlspecialchars($request['date']); ?></td>
+                        <td><?php echo htmlspecialchars($request['reference']); ?></td>
+                        <td><?php echo htmlspecialchars($request['statut']); ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php else : ?>
+                <tr class="suivi-info">
+                    <td colspan="5">Aucune demande.</td>
+                </tr>
+            <?php endif; ?>
 
-        </table>     
-
+        </table>
     </section>
 
 </main>
 
+<?php require 'view_end.php'; ?>

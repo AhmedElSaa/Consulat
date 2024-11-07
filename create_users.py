@@ -4,13 +4,15 @@ from datetime import datetime, timedelta
 
 # Listes prédéfinies de prénoms et noms pour générer des données factices
 first_names = [
-    'Jean', 'Marie', 'Pierre', 'Sophie', 'Luc', 'Julie', 'Paul', 'Laura', 'Marc', 'Emma',
-    'Thomas', 'Camille', 'Antoine', 'Inès', 'Julien', 'Chloé', 'Nicolas', 'Léa', 'Mathieu', 'Manon'
+    'Jean', 'Marie', 'Pierre', 'Sophie', 'Luc', 'Julie', 'Paul', 'Laura', 'Marc', 'Emma', 'Ahmed', 'Azzedine',
+    'Thomas', 'Camille', 'Antoine', 'Inès', 'Julien', 'Mohamed', 'Nicolas', 'Léa', 'Mathieu', 'Manon', 'Mehdi', 'Grégory', 'Marewane', 'Younes', 'Slimane',
+    'Iliasse', 'Lee', 'Apu', 'Axel', 'Kader', 'Rachid', 'Lakhdar', 'Morad', 'Plaisir', 'Mamadou', 'Juan', 'Bouchaib'
 ]
 
 last_names = [
-    'Martin', 'Bernard', 'Thomas', 'Petit', 'Robert', 'Richard', 'Durand', 'Dubois', 'Moreau', 'Laurent',
-    'Simon', 'Michel', 'Lefebvre', 'Leroy', 'Roux', 'David', 'Fontaine', 'Girard', 'Bonnet', 'Garnier'
+    'Martin', 'Bernard', 'Thomas', 'Petit', 'Robert', 'Richard', 'Riyad', 'Dubois', 'Moreau', 'Laurent', 'Nana', 'Hatem',
+    'Simon', 'Michel', 'Fouad', 'Leroy', 'Salah', 'David', 'Fontaine', 'Shaaban', 'Bonnet', 'Garnier', 'Fertikh', 'BenHadou', 'Lineaire',
+    'Lemaire', 'Mahrez', 'Ronaldo', 'Diallo', 'Traoré', 'Chrimni', 'Belouche'
 ]
 
 def generate_random_email(first_name, last_name, existing_emails):

@@ -13,7 +13,7 @@ class Controller_signin extends Controller{
                 $user = $m->findUserByEmail($email);
 
                 if ($user !== false) {
-                    if (password_verify($password, $user['password'])) {
+                    if ($password == $user['password']) {
                         // Authentification réussie
                         $_SESSION['login']  = 1;
                         $_SESSION['id']     = $user['id_utilisateur'];

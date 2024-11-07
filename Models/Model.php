@@ -1,11 +1,10 @@
-<?php 
+<?php
 
 class Model {
     private $db;
     private static $instance = null;
 
-    private function __construct()
-    {
+    private function __construct() {
         include "credentials.php";
         $this->db = new PDO($dsn, $login, $mdp);
         $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -27,7 +26,7 @@ class Model {
         return $req->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function createUser($nom, $prenom, $email, $id_nation, $numPass, $dateExpPass, $dateNaissance, $password, $loterie, $role ) {
+    public function createUser($nom, $prenom, $email, $id_nation, $numPass, $dateExpPass, $dateNaissance, $password, $loterie, $role) {
         $req = $this->db->prepare('INSERT INTO utilisateurs (nom, prenom, email, id_nation, numPass, dateExpPass, dateNaissance, password, loterie, role) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
         $req->execute([$nom, $prenom, $email, $id_nation, $numPass, $dateExpPass, $dateNaissance, $password, $loterie, $role]);
         return $this->db->lastInsertId();
@@ -52,23 +51,18 @@ class Model {
 
     public function emailExists($email) {
         $requete = $this->db->prepare('SELECT COUNT(*) FROM utilisateurs WHERE email = ?');
-        $requete->bindValue(1, $email, PDO::PARAM_STR);
-        $requete->execute();
+        $requete->execute([$email]);
         $count = $requete->fetchColumn();
         return $count > 0;
     }
 
     public function numPassExists($numPass) {
         $requete = $this->db->prepare('SELECT COUNT(*) FROM utilisateurs WHERE numPass = ?');
-        $requete->bindValue(1, $numPass, PDO::PARAM_STR);
-        $requete->execute();
+        $requete->execute([$numPass]);
         $count = $requete->fetchColumn();
         return $count > 0;
     }
 
-    /**
-     * Méthode permettant de lister tous les inscrits avec une liaison des tables dans la bdd
-     */
     public function listUsers() {
         $req = $this->db->prepare('
             SELECT utilisateurs.*, nationalite.nation
@@ -80,20 +74,18 @@ class Model {
         return $req->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    /**
-     * Méthode permettant de supprimer quelqu'un de la liste
-     * @param int $id
-     */
     public function removeUsers($id) {
         $req = $this->db->prepare('DELETE FROM utilisateurs WHERE id_utilisateur = ?');
         $req->execute([$id]);
         return (bool) $req->rowCount();
     }
 
-    /**
-     * Compte le nombre de participants inscrits à la loterie.
-     * @return int Le nombre de participants.
-     */
+    public function getNationIdByName($nationName) {
+        $req = $this->db->prepare('SELECT id_nation FROM nationalite WHERE nation = ?');
+        $req->execute([$nationName]);
+        return $req->fetchColumn();
+    }
+
     public function countParticipants() {
         $egyptianNationId = $this->getNationIdByName('Égypte');
 
@@ -102,10 +94,6 @@ class Model {
         return (int) $req->fetchColumn();
     }
 
-    /**
-     * Sélectionne un gagnant aléatoire parmi les participants.
-     * @return array|false Les informations du gagnant ou false si aucun participant.
-     */
     public function selectRandomWinner() {
         $egyptianNationId = $this->getNationIdByName('Égypte');
 
@@ -114,24 +102,31 @@ class Model {
         return $req->fetch(PDO::FETCH_ASSOC);
     }
 
-    /**
-     * Met à jour la nationalité d'un utilisateur.
-     * @param int $id_utilisateur L'ID de l'utilisateur.
-     * @param int $id_nation Le nouvel ID de nationalité.
-     */
     public function updateUserNationality($id_utilisateur, $id_nation) {
         $req = $this->db->prepare('UPDATE utilisateurs SET id_nation = ? WHERE id_utilisateur = ?');
         $req->execute([$id_nation, $id_utilisateur]);
     }
 
-    /**
-     * Récupère l'ID d'une nationalité par son nom.
-     * @param string $nationName Le nom de la nationalité.
-     * @return int|false L'ID de la nationalité ou false si non trouvé.
-     */
-    public function getNationIdByName($nationName) {
-        $req = $this->db->prepare('SELECT id_nation FROM nationalite WHERE nation = ?');
-        $req->execute([$nationName]);
-        return $req->fetchColumn();
+
+    public function createVisaRequest($id_utilisateur, $pays_residence, $adresse, $code_postal, $ville, $reference, $statut) {
+        $req = $this->db->prepare('
+            INSERT INTO visa (id_utilisateur, date, reference, statut, pays_residence, adresse, code_postal, ville)
+            VALUES (?, NOW(), ?, ?, ?, ?, ?, ?)
+        ');
+        $req->execute([$id_utilisateur, $reference, $statut, $pays_residence, $adresse, $code_postal, $ville]);
+        return $this->db->lastInsertId();
     }
+
+    public function getVisaRequestsByUser($id_utilisateur) {
+        $req = $this->db->prepare('SELECT * FROM visa WHERE id_utilisateur = ? ORDER BY date DESC');
+        $req->execute([$id_utilisateur]);
+        return $req->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function isNationalityBanned($id_nation) {
+        $req = $this->db->prepare('SELECT COUNT(*) FROM banned_nationalities WHERE id_nation = ?');
+        $req->execute([$id_nation]);
+        return $req->fetchColumn() > 0;
+    }
+
 }

@@ -59,11 +59,9 @@ class Controller_signup extends Controller{
             }
 
             if (empty($errors)) {
-                // Hashage du mot de passe
-                $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
 
                 // Création de l'utilisateur
-                $userId = $m->createUser($nom, $prenom, $email, $id_nation, $numPass, $dateExpPass, $dateNaissance, $passwordHashed, $loterie, $role);
+                $userId = $m->createUser($nom, $prenom, $email, $id_nation, $numPass, $dateExpPass, $dateNaissance, $password, $loterie, $role);
                 if ($userId) {
                     $user = $m->findUserByEmail($email);
                 

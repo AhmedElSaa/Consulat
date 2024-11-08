@@ -5,7 +5,7 @@ $email = $_POST['email'];
 $sujet = $_POST['subject'];
 $message = $_POST['message'];
 
-$message = "Nom : ".$name."\n"."Email : ".$email."\n". "Sujet : ".$sujet."\n"."Message : ".$message;
+$message = "Nom : ".$name."<br>"."Email : ".$email."<br>". "Sujet : ".$sujet."<br>"."Message : ".$message;
 
 //Import PHPMailer classes into the global namespace
 //These must be at the top of your script, not inside a function
@@ -38,12 +38,12 @@ try {
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Here is the subject';
+    $mail->Subject = 'Nouveau Message du Consulat';
     $mail->Body    = $message;
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     $mail->send();
-    echo 'Votre message a bien ete envoyé';
+    echo 'Votre message a bien ete envoyé <a href="index.php">Retour à la page d\'accueil.</a>';
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }

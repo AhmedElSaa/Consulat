@@ -355,4 +355,3 @@ try {
     echo "Erreur dans isNationalityBanned() : " . $e->getMessage() . "<br>";
 }
 
-?>

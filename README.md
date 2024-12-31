@@ -33,9 +33,9 @@ Ce projet concerne la création d’un site web fictif du consulat égyptien à 
 
 ## Interlocuteur(s) du projet
 
-Chef de Projet : EL SAADAWY Ahmed
-Développeur : EL SAADAWY Ahmed
-Client : M.NANA Grégory (gnana@zenity.fr)
+Chef de Projet : EL SAADAWY Ahmed<br>
+Développeur : EL SAADAWY Ahmed<br>
+Client : M.NANA Grégory (gnana@zenity.fr)<br>
 
 ## Contexte
 
@@ -43,18 +43,18 @@ Ce projet est un projet scolaire qui consiste à créer une application web éva
 
 ## Technique
 
-Language : - Php(Backend) - HTML/JS/CSS(FrontEnd)
-Base de données : - MySQL
-Serveur : - Apache
-Framework : - Bootstrap
-Tests : - Tests(try/catch) sur le fichier model.php
+Language : - Php(Backend) - HTML/JS/CSS(FrontEnd)<br>
+Base de données : - MySQL<br>
+Serveur : - Apache<br>
+Framework : - Bootstrap<br>
+Tests : - Tests(try/catch) sur le fichier model.php<br>
 
 ## Arborescence du Projet
 
-Content/ : Fichier .css et .js. 
-Controller/ : Contient tous les controllers du site.
-fpdf/ : Dossier pour générer les fichier .pdf des visas.
-img/ : Contient toute les images du site web.
+Content/ : Fichier .css et .js. <br>
+Controller/ : Contient tous les controllers du site.<br>
+fpdf/ : Dossier pour générer les fichier .pdf des visas.<br>
+img/ : Contient toute les images du site web.<br>
 
 ## Jalon
 

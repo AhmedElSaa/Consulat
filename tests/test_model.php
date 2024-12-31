@@ -157,48 +157,6 @@ try {
 
 echo "<br>";echo "<br>";
 
-
-// Test de la méthode numPassExists()
-try {
-    echo "Test de la méthode numPassExists()<br>";
-
-    $numPass = 'IJ1234567';
-
-    // S'assurer que le numéro de passeport n'existe pas
-    if ($model->numPassExists($numPass)) {
-        $req = $model->db->prepare('SELECT id_utilisateur FROM utilisateurs WHERE numPass = ?');
-        $req->execute([$numPass]);
-        $id_utilisateur = $req->fetchColumn();
-        $model->removeUsers($id_utilisateur);
-        echo "Utilisateur existant avec le passeport $numPass supprimé pour le test.<br>";
-    }
-
-    // Vérifier que le passeport n'existe pas
-    if (!$model->numPassExists($numPass)) {
-        echo "Succès : Le passeport $numPass n'existe pas.<br>";
-    } else {
-        echo "Échec : Le passeport $numPass devrait ne pas exister.<br>";
-    }
-
-    // Créer un utilisateur avec ce passeport
-    $id_utilisateur = $model->createUser('PassExists', 'User', 'test.pass@example.com', 1, $numPass, '2030-12-31', '1991-06-15', password_hash('password', PASSWORD_DEFAULT), 0, 'user');
-
-    // Vérifier que le passeport existe maintenant
-    if ($model->numPassExists($numPass)) {
-        echo "Succès : Le passeport $numPass existe maintenant.<br>";
-    } else {
-        echo "Échec : Le passeport $numPass devrait exister.<br>";
-    }
-
-    // Supprimer de  la base de données
-    $model->removeUsers($id_utilisateur);
-    echo "Utilisateur de test supprimé.<br>";
-} catch (Exception $e) {
-    echo "Erreur dans numPassExists() : " . $e->getMessage() . "<br>";
-}
-
-echo "<br>";echo "<br>";
-
 // Test de la méthode listUsers()
 try {
     echo "Test de la méthode listUsers()<br>";

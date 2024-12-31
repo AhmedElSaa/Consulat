@@ -35,8 +35,8 @@
                     <div class="card">
                         <img src="img/case1.jpg" class="card-img-top" alt="Image 1">
                         <div class="card-body">
-                            <h2>L'Égypte livre des armes à la Somalie</h2>
-                            <p class="card-text">L'Égypte livre des armes à la Somalie pour renforcer sa défense.</p>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                            <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam voluptatum laudantium quasi possimus!</p>
                         </div>
                     </div>
                 </div>
